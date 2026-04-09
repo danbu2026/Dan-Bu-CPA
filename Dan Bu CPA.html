@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dan Bu, CPA, MBA — Finance & Automation Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f6f1;
+      --bg-alt: #f0ece3;
+      --navy: #0f2340;
+      --navy-mid: #1a3a5c;
+      --teal: #0a7e6e;
+      --teal-light: #0fa88e;
+      --gold: #b8873a;
+      --text: #1c1c2e;
+      --text-mid: #4a4a5a;
+      --text-light: #7a7a8a;
+      --border: rgba(15,35,64,0.1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 4rem;
+      background: rgba(248,246,241,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 700; color: var(--navy);
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--text-mid); text-decoration: none;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 9rem 4rem 5rem;
+      background: var(--navy);
+      color: white;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 70% at 90% 50%, rgba(10,126,110,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 35% 50% at 5% 85%, rgba(184,135,58,0.1) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+    .hero-eyebrow {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--teal-light);
+      margin-bottom: 1.25rem;
+      animation: fadeUp 0.6s 0.1s both;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      font-weight: 700; line-height: 1.05;
+      color: white; margin-bottom: 0.5rem;
+      animation: fadeUp 0.6s 0.25s both;
+    }
+    .hero-creds {
+      font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.55);
+      letter-spacing: 0.12em; margin-bottom: 2rem;
+      animation: fadeUp 0.6s 0.35s both;
+    }
+    .hero-tagline {
+      font-size: 1.15rem; font-weight: 300; line-height: 1.75;
+      color: rgba(255,255,255,0.78); max-width: 720px;
+      animation: fadeUp 0.6s 0.45s both;
+    }
+    .hero-tagline strong { color: var(--teal-light); font-weight: 500; }
+    .hero-contact {
+      display: flex; gap: 1.5rem; margin-top: 2.5rem; flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.55s both;
+    }
+    .hero-contact a {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.65); text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 0.1rem; transition: all 0.2s;
+    }
+    .hero-contact a:hover { color: var(--teal-light); border-color: var(--teal-light); }
+    .hero-location {
+      font-size: 0.82rem; color: rgba(255,255,255,0.4);
+      display: flex; align-items: center; gap: 0.4rem;
+      margin-top: 1rem;
+      animation: fadeUp 0.6s 0.65s both;
+    }
+
+    /* ── VALUE PROPOSITION STRIP ── */
+    .value-strip {
+      background: var(--teal);
+      padding: 2rem 4rem;
+    }
+    .value-strip-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .value-item { text-align: center; }
+    .value-item .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; font-weight: 700; color: white; line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .value-item .label {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.75);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .main { max-width: 1000px; margin: 0 auto; padding: 5rem 4rem; }
+
+    /* ── SECTION TITLES ── */
+    .sec-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
+    .sec-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--teal); white-space: nowrap;
+    }
+    .sec-line { flex: 1; height: 1px; background: var(--border); }
+    .sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem; font-weight: 700; color: var(--navy);
+      margin-bottom: 2rem; line-height: 1.15;
+    }
+
+    /* ── SUMMARY ── */
+    .summary-block {
+      background: white; border: 1px solid var(--border);
+      border-radius: 6px; padding: 2.5rem;
+      margin-bottom: 4rem; position: relative;
+      border-left: 4px solid var(--teal);
+    }
+    .summary-block p {
+      font-size: 1rem; line-height: 1.85; color: var(--text-mid);
+    }
+    .summary-block p + p { margin-top: 1rem; }
+    .summary-block strong { color: var(--navy); font-weight: 600; }
+
+    /* ── SKILLS ── */
+    .skills-section { margin-bottom: 4rem; }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .skill-group {
+      background: white; border: 1px solid var(--border);
+      border-radius: 6px; padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-group:hover { border-color: var(--teal); transform: translateY(-2px); }
+    .skill-group-title {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.9rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag {
+      font-size: 0.8rem; font-weight: 400;
+      padding: 0.3rem 0.75rem; border-radius: 3px;
+      background: var(--bg-alt); color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    /* ── EXPERIENCE ── */
+    .experience-section { margin-bottom: 4rem; }
+    .exp-item { margin-bottom: 3rem; position: relative; }
+    .exp-item:not(:last-child)::after {
+      content: ''; position: absolute; left: 0; bottom: -1.5rem;
+      width: 100%; height: 1px; background: var(--border);
+    }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .exp-left {}
+    .exp-company {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 700; color: var(--navy);
+      line-height: 1.1; margin-bottom: 0.3rem;
+    }
+    .exp-title {
+      font-size: 0.85rem; font-weight: 500; color: var(--teal);
+      letter-spacing: 0.04em;
+    }
+    .exp-right { text-align: right; flex-shrink: 0; }
+    .exp-date {
+      font-size: 0.78rem; font-weight: 500; color: var(--text-light);
+      letter-spacing: 0.06em; white-space: nowrap;
+    }
+    .exp-location {
+      font-size: 0.75rem; color: var(--text-light); margin-top: 0.2rem;
+    }
+    .exp-bullets { list-style: none; padding: 0; }
+    .exp-bullets li {
+      font-size: 0.92rem; line-height: 1.75; color: var(--text-mid);
+      padding-left: 1.2rem; position: relative; margin-bottom: 0.6rem;
+    }
+    .exp-bullets li::before {
+      content: ''; position: absolute; left: 0; top: 0.65em;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--teal);
+    }
+    .exp-bullets li strong { color: var(--navy); font-weight: 600; }
+    .exp-highlight {
+      display: inline-block; margin-top: 0.75rem;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+      padding: 0.25rem 0.75rem; border-radius: 3px;
+      background: rgba(10,126,110,0.08); color: var(--teal);
+      border: 1px solid rgba(10,126,110,0.2);
+    }
+
+    /* ── EDUCATION ── */
+    .edu-section { margin-bottom: 4rem; }
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .edu-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 6px; padding: 1.75rem;
+      border-top: 3px solid var(--gold);
+    }
+    .edu-degree {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 700; color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .edu-school { font-size: 0.85rem; color: var(--teal); font-weight: 500; margin-bottom: 0.5rem; }
+    .edu-year { font-size: 0.75rem; color: var(--text-light); margin-bottom: 0.75rem; }
+    .edu-notes { font-size: 0.82rem; color: var(--text-mid); line-height: 1.6; }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-row {
+      display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem;
+    }
+    .cert-badge {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: white; border: 1px solid var(--border);
+      border-radius: 6px; padding: 1rem 1.5rem;
+    }
+    .cert-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--navy); display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
+    }
+    .cert-icon span { font-size: 0.65rem; font-weight: 700; color: white; letter-spacing: 0.05em; }
+    .cert-text {}
+    .cert-name { font-size: 0.9rem; font-weight: 600; color: var(--navy); }
+    .cert-body { font-size: 0.75rem; color: var(--text-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,0.4);
+      padding: 2rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem;
+    }
+    footer a { color: var(--teal-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .reveal { transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.pre { opacity: 0; transform: translateY(24px); }
+    .reveal.in  { opacity: 1; transform: none; }
+
+    /* ── PRINT ── */
+    @media print {
+      nav, .value-strip { display: none; }
+      .hero { padding: 2rem; }
+      .main { padding: 2rem; }
+      body { background: white; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero, .value-strip, .main { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .exp-header { flex-direction: column; }
+      .exp-right { text-align: left; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name">Dan Bu, CPA, MBA</div>
+  <ul class="nav-links">
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="https://www.linkedin.com/in/budan/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Finance Controller &nbsp;·&nbsp; CPA &nbsp;·&nbsp; Power Platform Specialist</div>
+    <h1>Dan Bu</h1>
+    <div class="hero-creds">CPA &nbsp;·&nbsp; MBA &nbsp;·&nbsp; 10+ Years Institutional Finance</div>
+    <p class="hero-tagline">
+      A senior finance professional who brings together <strong>deep fund accounting expertise</strong> and <strong>hands-on automation capability</strong> — helping organizations close faster, report smarter, and make better decisions through Power BI dashboards and Microsoft Power Platform workflows.
+    </p>
+    <div class="hero-contact">
+      <a href="mailto:danbu2026@gmail.com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        danbu2026@gmail.com
+      </a>
+      <a href="tel:4699884771">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.07 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 17z"/></svg>
+        (469) 988-4771
+      </a>
+      <a href="https://www.linkedin.com/in/budan/" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        linkedin.com/in/budan
+      </a>
+    </div>
+    <div class="hero-location">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      Southlake, TX
+    </div>
+  </div>
+</div>
+
+<!-- VALUE STRIP -->
+<div class="value-strip">
+  <div class="value-strip-inner">
+    <div class="value-item">
+      <div class="num">10+</div>
+      <div class="label">Years Institutional Finance</div>
+    </div>
+    <div class="value-item">
+      <div class="num">$33B</div>
+      <div class="label">Fund AUM Oversight</div>
+    </div>
+    <div class="value-item">
+      <div class="num">CPA</div>
+      <div class="label">Licensed & Credentialed</div>
+    </div>
+    <div class="value-item">
+      <div class="num">PE + RE</div>
+      <div class="label">Private Equity & Real Estate</div>
+    </div>
+    <div class="value-item">
+      <div class="num">Power BI</div>
+      <div class="label">Dashboards & Automation</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- SUMMARY -->
+  <div id="summary" class="reveal">
+    <div class="sec-header">
+      <span class="sec-label">Professional Summary</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="summary-block">
+      <p>
+        I am a <strong>CPA and MBA-credentialed finance professional</strong> with over a decade of hands-on experience in fund accounting, financial reporting, and controller-level operations across private equity and institutional real estate — including roles at <strong>Goldman Sachs</strong> and <strong>Clarion Partners</strong>.
+      </p>
+      <p>
+        What sets me apart from a traditional finance candidate is a genuine, hands-on capability in <strong>Microsoft Power Platform</strong> — I don't just understand automation in theory, I build it. I design and deploy <strong>Power Automate workflows</strong> that eliminate manual reporting cycles, and I create <strong>Power BI dashboards</strong> that give leadership real-time visibility into financial performance. These are skills most finance professionals don't have — and organizations increasingly need them embedded directly within the finance function, not outsourced to IT.
+      </p>
+      <p>
+        I am seeking a <strong>Controller</strong> role where I can contribute both deep accounting expertise and a modernizing force — helping the team close faster, report more clearly, and operate with less friction.
+      </p>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div id="skills" class="skills-section reveal">
+    <div class="sec-header">
+      <span class="sec-label">Core Skills</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <div class="skill-group-title">Fund Accounting & Reporting</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Financial Statement Preparation</span>
+          <span class="skill-tag">Consolidated Reporting</span>
+          <span class="skill-tag">GAAP / IFRS</span>
+          <span class="skill-tag">Audit Coordination</span>
+          <span class="skill-tag">Month-End Close</span>
+          <span class="skill-tag">REIT Compliance</span>
+          <span class="skill-tag">Lender Reporting</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Automation & Data Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Power Automate</span>
+          <span class="skill-tag">Power Apps</span>
+          <span class="skill-tag">Microsoft Power Platform</span>
+          <span class="skill-tag">SharePoint</span>
+          <span class="skill-tag">Excel (Advanced)</span>
+          <span class="skill-tag">Dashboard Design</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">FP&A & Financial Modeling</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Variance Analysis</span>
+          <span class="skill-tag">Forecasting</span>
+          <span class="skill-tag">Performance Reporting</span>
+          <span class="skill-tag">Management Fee Calculations</span>
+          <span class="skill-tag">Incentive Fee Modeling</span>
+          <span class="skill-tag">Capital Waterfall</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Leadership & Operations</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Cross-functional Collaboration</span>
+          <span class="skill-tag">Investor Relations Support</span>
+          <span class="skill-tag">Team Training & Mentorship</span>
+          <span class="skill-tag">Process Improvement</span>
+          <span class="skill-tag">Tax Coordination</span>
+          <span class="skill-tag">Stakeholder Reporting</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div id="experience" class="experience-section reveal">
+    <div class="sec-header">
+      <span class="sec-label">Professional Experience</span>
+      <div class="sec-line"></div>
+    </div>
+
+    <!-- Clarion Partners -->
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-company">Clarion Partners</div>
+          <div class="exp-title">Assistant Controller — Industrial REIT, $33B AUM</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-date">April 2022 – Present</div>
+          <div class="exp-location">New York, NY</div>
+        </div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Oversee consolidated financial statements and reporting for a <strong>$33B open-ended industrial REIT</strong>, ensuring accuracy, compliance, and adherence to GAAP and fund-specific accounting standards.</li>
+        <li>Design and implement <strong>complex management and incentive fee models</strong> spanning multi-tranche investment structures over a 20+ year timeframe — requiring both deep accounting knowledge and advanced modeling skills.</li>
+        <li>Serve as primary point of contact for client relations, audit requests, lender reporting, and debt calculations — managing communications across internal and external stakeholders at an institutional level.</li>
+        <li>Lead multiple <strong>process automation projects</strong> using Microsoft Power Platform, replacing manual recurring workflows with automated, scalable solutions that improve accuracy and free up team capacity.</li>
+        <li>Coordinate REIT tax compliance with internal tax teams, overseeing reporting requirements and supporting regulatory filings.</li>
+      </ul>
+      <span class="exp-highlight">⚡ Power Platform Automation Lead</span>
+    </div>
+
+    <!-- Goldman Sachs -->
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-company">Goldman Sachs</div>
+          <div class="exp-title">Associate — Private Equity Fund Controller Division</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-date">Feb 2021 – April 2022</div>
+          <div class="exp-location">New York, NY</div>
+        </div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Reviewed trial balances prepared by outsourced fund administrators and coordinated the <strong>quarterly financial statement release</strong> process across multiple private equity funds.</li>
+        <li>Collaborated across investment, risk, client service, operations, technology, legal, and compliance teams to support investor and regulatory reporting requirements.</li>
+        <li>Established new <strong>fund fee calculation frameworks</strong> and reporting across multiple systems; performed valuations, reconciliations, and assisted with annual audit processes.</li>
+      </ul>
+    </div>
+
+    <!-- Strait Capital -->
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-company">Strait Capital Co Ltd</div>
+          <div class="exp-title">Senior Fund Accountant</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-date">May 2019 – Jan 2021</div>
+        </div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Managed capital activity including management fee events, distributions, and transfers for two Legacy Real Estate funds, ensuring accurate and timely reporting.</li>
+        <li>Prepared and reviewed journal entries and monthly, quarterly, and annual closing packages to successfully issue audited financials.</li>
+        <li><strong>Built Excel templates and automated reports</strong> to drive client deliverables and improve internal process efficiency — reducing manual work and increasing consistency.</li>
+        <li>Provided mentoring to team members; coordinated external audit and tax processes on behalf of clients.</li>
+      </ul>
+    </div>
+
+    <!-- MUFG -->
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-company">MUFG Capital Analytics</div>
+          <div class="exp-title">Senior Financial Reporting Analyst / Fund Accountant</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-date">Oct 2016 – May 2019</div>
+        </div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Prepared and reviewed journal entries and cash operations including capital calls, distributions, fees, and income; performed general ledger and bank reconciliations with regular daily, monthly, and quarterly reporting.</li>
+        <li>Analyzed quarterly financial statements of private equity partnership investments and reconciled transactions and valuations in the investment accounting system.</li>
+        <li>Trained and mentored new Financial Reporting Analysts and interns across the team.</li>
+      </ul>
+    </div>
+
+    <!-- UBS -->
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-company">UBS Realty Investors, LLC</div>
+          <div class="exp-title">Research & Strategy Associate</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-date">June 2014 – April 2015</div>
+        </div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Supported market research, due diligence, and valuation analysis for real estate transactions using DYNA software and proprietary analytical frameworks.</li>
+        <li>Delivered competitor analyses, deal summaries, ring studies, and transaction databases to support acquisition, asset management, and portfolio management groups.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- EDUCATION -->
+  <div id="education" class="edu-section reveal">
+    <div class="sec-header">
+      <span class="sec-label">Education</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">Master of Business Administration (MBA)</div>
+        <div class="edu-school">University of Connecticut School of Business</div>
+        <div class="edu-year">May 2015 &nbsp;·&nbsp; Concentration: Real Estate & Finance</div>
+        <div class="edu-notes">
+          Stephen D. Messner School of Business Scholarship Recipient<br/>
+          Real Estate Graduate Student of the Year, 2014–2015
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor of Arts in Economics</div>
+        <div class="edu-school">Qinghai University, China</div>
+        <div class="edu-year">June 2007</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="reveal">
+    <div class="sec-header">
+      <span class="sec-label">Certifications</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="cert-row">
+      <div class="cert-badge">
+        <div class="cert-icon"><span>CPA</span></div>
+        <div class="cert-text">
+          <div class="cert-name">Certified Public Accountant</div>
+          <div class="cert-body">CPA License</div>
+        </div>
+      </div>
+      <div class="cert-badge">
+        <div class="cert-icon"><span>MBA</span></div>
+        <div class="cert-text">
+          <div class="cert-name">Master of Business Administration</div>
+          <div class="cert-body">Real Estate & Finance Concentration</div>
+        </div>
+      </div>
+      <div class="cert-badge">
+        <div class="cert-icon"><span>PP</span></div>
+        <div class="cert-text">
+          <div class="cert-name">Microsoft Power Platform</div>
+          <div class="cert-body">Power BI · Power Automate · Power Apps</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- END MAIN -->
+
+<!-- FOOTER -->
+<footer>
+  <div>Dan Bu, CPA, MBA &nbsp;·&nbsp; Southlake, TX</div>
+  <div>
+    <a href="mailto:danbu2026@gmail.com">danbu2026@gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/budan/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  els.forEach(el => el.classList.add('pre'));
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => { e.target.classList.remove('pre'); e.target.classList.add('in'); }, i * 80);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(el => obs.observe(el));
+  } else {
+    els.forEach(el => { el.classList.remove('pre'); el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
